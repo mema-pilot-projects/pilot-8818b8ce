@@ -1,0 +1,9 @@
+export interface Task {
+  _id: string;
+  title: string;
+  completed: boolean;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export type FilterType = 'all' | 'active' | 'completed';
