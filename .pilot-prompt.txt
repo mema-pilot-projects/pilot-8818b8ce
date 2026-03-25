@@ -1,8 +1,11 @@
-You are building a complete, production-ready project from scratch.
-First, read CLAUDE.md in the current directory — it contains the full project specification.
+You are UPDATING an existing project. The codebase has been cloned into the current directory.
+Read CLAUDE.md — it contains the UPDATED project specification.
+Compare it with the existing code and make ONLY the necessary changes.
+Do NOT rewrite everything from scratch. Preserve existing working code.
+Focus on: new features, changed requirements, bug fixes.
 
 Project: Simple TODO App
-Description: 一个简单的个人任务管理器，用于提高日常工作效率。目标用户是需要管理日常任务的个人用户，解决任务组织和跟踪的问题。
+Description: 一个简单的个人任务管理器，用于提高日常工作效率。目标用户是需要管理日常任务的个人用户，解决任务组织和跟踪的问题。用户可以为任务设置优先级（高/中/低）
 
 ## Your Tasks (complete ALL of them):
 

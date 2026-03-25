@@ -7,11 +7,11 @@ dotenv.config();
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/todo-app';
 
 const sampleTasks = [
-  { title: 'Set up project structure and development environment', completed: true },
-  { title: 'Implement backend API with Express and MongoDB', completed: true },
-  { title: 'Create React frontend with TypeScript', completed: false },
-  { title: 'Write unit and integration tests', completed: false },
-  { title: 'Deploy application to production', completed: false },
+  { title: 'Set up project structure and development environment', completed: true, priority: 'high' },
+  { title: 'Implement backend API with Express and MongoDB', completed: true, priority: 'high' },
+  { title: 'Create React frontend with TypeScript', completed: false, priority: 'high' },
+  { title: 'Write unit and integration tests', completed: false, priority: 'medium' },
+  { title: 'Deploy application to production', completed: false, priority: 'low' },
 ];
 
 async function seed(): Promise<void> {
@@ -27,7 +27,7 @@ async function seed(): Promise<void> {
     const tasks = await Task.insertMany(sampleTasks);
     console.log(`Inserted ${tasks.length} sample tasks:`);
     tasks.forEach((task) => {
-      console.log(`  - [${task.completed ? 'x' : ' '}] ${task.title}`);
+      console.log(`  - [${task.completed ? 'x' : ' '}] [${task.priority}] ${task.title}`);
     });
 
     console.log('Seed completed successfully');

@@ -1,5 +1,7 @@
 import { Router, Request, Response } from 'express';
-import { Task } from '../models/Task';
+import { Task, Priority } from '../models/Task';
+
+const VALID_PRIORITIES: Priority[] = ['high', 'medium', 'low'];
 
 const router = Router();
 
@@ -38,7 +40,18 @@ router.post('/', async (req: Request, res: Response): Promise<void> => {
       return;
     }
 
-    const task = new Task({ title: title.trim() });
+    const { priority } = req.body;
+    const taskData: { title: string; priority?: Priority } = { title: title.trim() };
+
+    if (priority !== undefined) {
+      if (!VALID_PRIORITIES.includes(priority)) {
+        res.status(400).json({ success: false, message: 'priority must be one of: high, medium, low' });
+        return;
+      }
+      taskData.priority = priority;
+    }
+
+    const task = new Task(taskData);
     await task.save();
 
     res.status(201).json({ success: true, data: task });
@@ -55,16 +68,26 @@ router.post('/', async (req: Request, res: Response): Promise<void> => {
 router.put('/:id', async (req: Request, res: Response): Promise<void> => {
   try {
     const { id } = req.params;
-    const { completed } = req.body;
+    const { completed, priority } = req.body;
 
     if (typeof completed !== 'boolean') {
       res.status(400).json({ success: false, message: 'completed must be a boolean' });
       return;
     }
 
+    const updateData: { completed: boolean; priority?: Priority } = { completed };
+
+    if (priority !== undefined) {
+      if (!VALID_PRIORITIES.includes(priority)) {
+        res.status(400).json({ success: false, message: 'priority must be one of: high, medium, low' });
+        return;
+      }
+      updateData.priority = priority;
+    }
+
     const task = await Task.findByIdAndUpdate(
       id,
-      { completed },
+      updateData,
       { new: true, runValidators: true }
     );
 

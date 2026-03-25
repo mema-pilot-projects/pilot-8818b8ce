@@ -28,8 +28,28 @@ describe('Task Model', () => {
       expect(saved._id).toBeDefined();
       expect(saved.title).toBe('Test Task');
       expect(saved.completed).toBe(false);
+      expect(saved.priority).toBe('medium');
       expect(saved.createdAt).toBeDefined();
       expect(saved.updatedAt).toBeDefined();
+    });
+
+    it('should accept valid priority values', async () => {
+      for (const priority of ['high', 'medium', 'low'] as const) {
+        const task = new Task({ title: `Task ${priority}`, priority });
+        const saved = await task.save();
+        expect(saved.priority).toBe(priority);
+      }
+    });
+
+    it('should fail validation with invalid priority', async () => {
+      const task = new Task({ title: 'Task', priority: 'urgent' });
+      await expect(task.save()).rejects.toThrow();
+    });
+
+    it('should default priority to medium', async () => {
+      const task = new Task({ title: 'No Priority Task' });
+      const saved = await task.save();
+      expect(saved.priority).toBe('medium');
     });
 
     it('should fail validation when title is missing', async () => {

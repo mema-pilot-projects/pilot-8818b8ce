@@ -13,3 +13,10 @@ dist/
 .cache/
 .npm/
 .claude/
+node_modules/
+dist/
+.env
+*.log
+.cache/
+.npm/
+.claude/

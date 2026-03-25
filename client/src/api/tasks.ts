@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { Task, FilterType } from '../types';
+import { Task, FilterType, Priority } from '../types';
 
 const api = axios.create({
   baseURL: '/api',
@@ -17,8 +17,8 @@ export async function fetchTasks(filter: FilterType = 'all'): Promise<Task[]> {
   return res.data.data;
 }
 
-export async function createTask(title: string): Promise<Task> {
-  const res = await api.post<{ success: boolean; data: Task }>('/tasks', { title });
+export async function createTask(title: string, priority: Priority = 'medium'): Promise<Task> {
+  const res = await api.post<{ success: boolean; data: Task }>('/tasks', { title, priority });
   return res.data.data;
 }
 

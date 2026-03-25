@@ -297,6 +297,55 @@ body {
   border-color: #2ecc71;
 }
 
+/* Priority Badge */
+.task-item__priority {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.task-item__priority--high {
+  background-color: #e74c3c;
+}
+
+.task-item__priority--medium {
+  background-color: #f39c12;
+}
+
+.task-item__priority--low {
+  background-color: #27ae60;
+}
+
+/* Priority Select */
+.task-form__priority {
+  padding: 12px 10px;
+  font-size: 0.9rem;
+  border: 2px solid #e0e6ed;
+  border-radius: 8px;
+  outline: none;
+  background: #fafbfc;
+  color: #333;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+.task-form__priority:focus {
+  border-color: #3498db;
+  background: #fff;
+}
+
+.task-form__priority:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
 /* Task Title */
 .task-item__title {
   flex: 1;
@@ -365,6 +414,10 @@ body {
 
   .task-form__input-group {
     flex-direction: column;
+  }
+
+  .task-form__priority {
+    width: 100%;
   }
 
   .task-form__button {

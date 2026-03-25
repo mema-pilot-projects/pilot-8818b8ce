@@ -82,7 +82,26 @@ describe('Tasks API', () => {
       expect(res.body.success).toBe(true);
       expect(res.body.data.title).toBe('New Task');
       expect(res.body.data.completed).toBe(false);
+      expect(res.body.data.priority).toBe('medium');
       expect(res.body.data._id).toBeDefined();
+    });
+
+    it('should create a task with specified priority', async () => {
+      const res = await request(app)
+        .post('/api/tasks')
+        .send({ title: 'High Priority Task', priority: 'high' });
+
+      expect(res.status).toBe(201);
+      expect(res.body.data.priority).toBe('high');
+    });
+
+    it('should return 400 for invalid priority', async () => {
+      const res = await request(app)
+        .post('/api/tasks')
+        .send({ title: 'Task', priority: 'urgent' });
+
+      expect(res.status).toBe(400);
+      expect(res.body.success).toBe(false);
     });
 
     it('should return 400 when title is missing', async () => {

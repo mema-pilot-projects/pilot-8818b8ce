@@ -1,8 +1,11 @@
 import mongoose, { Document, Schema } from 'mongoose';
 
+export type Priority = 'high' | 'medium' | 'low';
+
 export interface ITask extends Document {
   title: string;
   completed: boolean;
+  priority: Priority;
   createdAt: Date;
   updatedAt: Date;
 }
@@ -18,6 +21,11 @@ const TaskSchema = new Schema<ITask>(
     completed: {
       type: Boolean,
       default: false,
+    },
+    priority: {
+      type: String,
+      enum: ['high', 'medium', 'low'],
+      default: 'medium',
     },
   },
   {

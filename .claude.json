@@ -327,13 +327,11 @@
   "opusProMigrationComplete": true,
   "sonnet1m45MigrationComplete": true,
   "userID": "c28940359960e20c6392aeb79b0ce0e88d13829aa1204c9e1834d902abc10da8",
-  "clientDataCache": {
-    "data": null,
-    "timestamp": 1774417858378
-  },
+  "clientDataCache": {},
   "penguinModeOrgEnabled": true,
   "metricsStatusCache": {
     "enabled": true,
     "timestamp": 1774418159224
-  }
+  },
+  "additionalModelOptionsCache": []
 }

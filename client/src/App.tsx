@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { Task, FilterType } from './types';
+import { Task, FilterType, Priority } from './types';
 import { fetchTasks, createTask, updateTask, deleteTask } from './api/tasks';
 import TaskForm from './components/TaskForm';
 import TaskList from './components/TaskList';
@@ -43,11 +43,11 @@ const App: React.FC = () => {
     completed: allTasks.filter((t) => t.completed).length,
   };
 
-  const handleAddTask = async (title: string) => {
+  const handleAddTask = async (title: string, priority: Priority = 'medium') => {
     try {
       setIsAdding(true);
       setError(null);
-      const newTask = await createTask(title);
+      const newTask = await createTask(title, priority);
       setAllTasks((prev) => [newTask, ...prev]);
     } catch (err) {
       setError('Failed to add task. Please try again.');

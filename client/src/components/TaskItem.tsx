@@ -7,6 +7,12 @@ interface TaskItemProps {
   onDelete: (id: string) => Promise<void>;
 }
 
+const PRIORITY_LABELS: Record<string, string> = {
+  high: '高',
+  medium: '中',
+  low: '低',
+};
+
 const TaskItem: React.FC<TaskItemProps> = ({ task, onToggle, onDelete }) => {
   const handleToggle = () => {
     onToggle(task._id, !task.completed);
@@ -28,6 +34,9 @@ const TaskItem: React.FC<TaskItemProps> = ({ task, onToggle, onDelete }) => {
         />
         <span className="task-item__checkmark"></span>
       </label>
+      <span className={`task-item__priority task-item__priority--${task.priority}`}>
+        {PRIORITY_LABELS[task.priority] ?? '中'}
+      </span>
       <span className="task-item__title">{task.title}</span>
       <button
         className="task-item__delete"
