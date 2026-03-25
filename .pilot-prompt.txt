@@ -1,0 +1,66 @@
+You are building a complete, production-ready project from scratch.
+First, read CLAUDE.md in the current directory — it contains the full project specification.
+
+Project: Simple TODO App
+Description: 一个简单的个人任务管理器，用于提高日常工作效率。目标用户是需要管理日常任务的个人用户，解决任务组织和跟踪的问题。
+
+## Your Tasks (complete ALL of them):
+
+### 1. Project Setup
+- Initialize the project (package.json or equivalent)
+- Install all required dependencies
+- Create proper directory structure
+- Set up TypeScript/linting config if applicable
+- Create .gitignore
+
+### 3. API Implementation
+- Implement ALL 4 API endpoints defined in CLAUDE.md
+- Include request validation, error handling, proper HTTP status codes
+- Implement authentication/authorization if specified
+
+### 4. Frontend
+- Build all UI components and pages
+- Connect to the backend API
+- Implement responsive design
+- Handle loading states and errors
+
+### 5. Testing
+- Write unit tests for core business logic
+- Write API integration tests
+- Run all tests and fix any failures
+- Ensure all tests pass before finishing
+
+### 6. Documentation & Config
+- Create README.md with:
+  - Project description
+  - Setup instructions (how to install and run)
+  - API documentation (if applicable)
+  - Environment variables needed
+- Create .env.example with all required environment variables
+- Create seed data script if the project uses a database
+
+## Quality Requirements:
+- Code must compile/build without errors
+- All tests must pass
+- Follow best practices for the chosen tech stack
+- Include error handling throughout
+- No placeholder or TODO code — implement everything fully
+- The project must be runnable with the instructions in README.md
+
+## Non-functional requirements:
+- 响应时间小于500毫秒
+- 移动端响应式设计
+
+## IMPORTANT: Before you finish, run these verification steps:
+
+1. `npm run build` (or equivalent) — must succeed with zero errors
+2. `npm test` — all tests must pass
+3. Verify every API endpoint listed in CLAUDE.md is implemented
+4. Verify README.md exists with clear setup and run instructions
+5. Verify .env.example exists listing all required environment variables
+6. If using a database, verify a seed data script exists
+7. Verify the project can start successfully (`npm start` or equivalent)
+
+If ANY check fails, fix the issue and re-run the check.
+Do NOT finish until all checks pass.
+Report the verification results at the end of your response.
